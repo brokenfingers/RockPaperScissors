@@ -6,14 +6,13 @@
     </head>
     <body>
         <script>
-            
             function playRound(playerSelection, computerSelection) {
                 playerSelection = lowLetters(playerSelection);
                 computerSelection = lowLetters(computerSelection);
                 
                 if (playerSelection == computerSelection) {
 
-                    return 'You pick the same';
+                    return `You pick the same: ${playerSelection}  and  ${computerSelection}`;
                 } else if(playerSelection == 'rock' && computerSelection == 'scissors' ||
                          playerSelection == 'scissors' && computerSelection == 'paper' ||
                          playerSelection == 'paper' && computerSelection == 'rock') {
@@ -25,10 +24,9 @@
                 }
 
             }
-
             function game(){
                 for(let i=0; i<5; i++) {
-                    console.log(i);
+                   
                     console.log(playRound(playerSelection, computerPlay()));
                 }
                 if(playerWins>computerWins) {
@@ -40,35 +38,33 @@
         
                 }
                 
-            }
-           
-
+            }           
             function winloseMessage(a, b, winLose) {
                 return `You ${winLose}. ${a} beats ${b}`;
             }
-
-             function computerPlay(){
+            function computerPlay(){
                 let options = ['Rock', 'Paper', 'Scissors'];
                 let rnd = Math.round(Math.random()*2);
                 
                 return options[rnd];
             }
-            let playerWins = 0;
-            let computerWins = 0;
-            let computerSelection = computerPlay();
-            
-            let playerSelection = prompt('Rock, Paper or Scissors?:', '');
-           
-
-            game();
-             
-
-            
             function lowLetters(str) {
                 return str.toLowerCase();
             }
-            
-
+            function userInput() {
+                let msg = 'Rock, Paper or Scissors?:'
+                let inpt = prompt(msg, '');
+                while(!msg.toLocaleLowerCase().includes(inpt.toLocaleLowerCase())) {
+                inpt = prompt(`Wrong input, select between: ${msg}`, '');
+            }
+                return inpt;
+    
+            }
+            let playerWins = 0;
+            let computerWins = 0;
+            let computerSelection = computerPlay();           
+            let playerSelection = userInput();
+            game(); 
         </script>
     </body>
 

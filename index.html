@@ -9,7 +9,8 @@
             function playRound(playerSelection, computerSelection) {
                 playerSelection = lowLetters(playerSelection);
                 computerSelection = lowLetters(computerSelection);
-                
+               
+            
                 if (playerSelection == computerSelection) {
 
                     return `You pick the same: ${playerSelection}  and  ${computerSelection}`;
@@ -25,9 +26,13 @@
 
             }
             function game(){
-                for(let i=0; i<5; i++) {
-                   
-                    console.log(playRound(playerSelection, computerPlay()));
+
+                while(gameTries) {
+                    console.log(' ');
+                    roundMessage = playRound(playerSelection, computerPlay());
+                    console.log(roundMessage);
+                    gameTries--;
+                    
                 }
                 if(playerWins>computerWins) {
                     console.log(`Player wins result: ${playerWins} and ${computerWins}`);
@@ -60,6 +65,8 @@
                 return inpt;
     
             }
+            let gameTries = 5;
+            let roundMessage = '';
             let playerWins = 0;
             let computerWins = 0;
             let computerSelection = computerPlay();           

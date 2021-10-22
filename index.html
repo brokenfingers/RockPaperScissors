@@ -7,6 +7,66 @@
     <body>
         <script>
             
+            function playRound(playerSelection, computerSelection) {
+                playerSelection = lowLetters(playerSelection);
+                computerSelection = lowLetters(computerSelection);
+                
+                if (playerSelection == computerSelection) {
+
+                    return 'You pick the same';
+                } else if(playerSelection == 'rock' && computerSelection == 'scissors' ||
+                         playerSelection == 'scissors' && computerSelection == 'paper' ||
+                         playerSelection == 'paper' && computerSelection == 'rock') {
+                    playerWins++;          
+                    return winloseMessage(playerSelection, computerSelection, 'win');
+                } else {
+                    computerWins++;
+                    return winloseMessage( computerSelection, playerSelection, 'lose');
+                }
+
+            }
+
+            function game(){
+                for(let i=0; i<5; i++) {
+                    console.log(playRound(playerSelection, computerPlay()));
+                }
+                if(playerWins>computerWins) {
+                    console.log(`Player wins result: ${playerWins} and ${computerWins}`);
+                } else if (playerWins<computerWins){
+                    console.log(`Computer wins result: ${computerWins} and ${playerWins}`);
+                } else {
+                    console.log(`Result is equal: ${computerWins} and ${playerWins}`);
+        
+                }
+                
+            }
+           
+
+            function winloseMessage(a, b, winLose) {
+                return `You ${winLose}. ${a} beats ${b}`;
+            }
+
+             function computerPlay(){
+                let options = ['Rock', 'Paper', 'Scissors'];
+                let rnd = Math.round(Math.random()*2);
+                
+                return options[rnd];
+            }
+            let playerWins = 0;
+            let computerWins = 0;
+            let computerSelection = computerPlay();
+            
+            let playerSelection = 'Rock';
+           
+            game();
+             
+
+            
+            function lowLetters(str) {
+                return str.toLowerCase();
+            }
+            
+
         </script>
     </body>
 

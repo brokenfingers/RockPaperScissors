@@ -28,6 +28,7 @@
 
             function game(){
                 for(let i=0; i<5; i++) {
+                    console.log(i);
                     console.log(playRound(playerSelection, computerPlay()));
                 }
                 if(playerWins>computerWins) {
@@ -56,8 +57,9 @@
             let computerWins = 0;
             let computerSelection = computerPlay();
             
-            let playerSelection = 'Rock';
+            let playerSelection = prompt('Rock, Paper or Scissors?:', '');
            
+
             game();
              
 

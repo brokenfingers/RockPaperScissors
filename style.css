@@ -1,0 +1,21 @@
+html {
+    height: 100%;
+}
+
+button {
+    display:block;
+}
+
+.contentHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.buttonsHolder{
+    display: flex;
+    flex-direction: row;
+    
+}
